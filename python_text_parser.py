@@ -36,6 +36,7 @@ while 1==1:
     print("2 >> sustituir vocal")
     print("3 >> contar carácteres")
     print("4 >> contar palabras")
+    print("5 >> buscar palabra en texto")
     option = input("Seleccione opción: ")
 
     match option:
@@ -52,7 +53,14 @@ while 1==1:
             count_char(text)
         case "4":
             text = input("Introduzca una frase: \n ")
-            
             print("La frase introducida tiene "+ str(count_words(text)) + " palabras")
+            print(f'la primera letra es "{text[0]}", la última letra es "{text[-1]}"')
+        case "5":
+            word = input("¿Qué palabra desea buscar? \n ").lower()
+            text = input("Introduzca el texto en el que desea encontrar la palabra \n ").lower()
+            if word in text:
+                print("La palabra SÍ se encuentra en el texto")
+            else:
+                print("La palabra NO se encuentra en el texto")
         case _:
             print("Debe seleccionar una de las opciones numéricas del menú.")
