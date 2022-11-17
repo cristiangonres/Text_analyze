@@ -8,9 +8,11 @@ def substitute_vowel(_str, new_vowel):
     _str = re.sub(r'[aeiou]', new_vowel, _str)
     print(_str )
     
-def count_words(_str):
-    _str = _str.split(" ")
-    return len(_str)
+def count_words(_str, inverse = False):
+    _str_list = _str.split(" ")
+    if inverse == True:
+        reverse_sentence(_str_list)
+    return len(_str_list)
 
 def count_char(_str):
     char_dic = {}
@@ -21,22 +23,25 @@ def count_char(_str):
             if char in char_dic:
                 char_dic[char] += 1
             else:
-                char_dic[char] = 1
-                
+                char_dic[char] = 1              
     print("El texto introducido tiene "+ str(chars) + " carácteres")
-    
     for char, valor in char_dic.items():
         print(f'La letra {char} aparece {valor} veces')
     return char_dic, chars
+
+def reverse_sentence(_str):
+    _str.reverse()
+    _str = " ".join(_str)
+    print(_str)
         
     
-
 while 1==1:
     print("1 >> invertir texto")
     print("2 >> sustituir vocal")
     print("3 >> contar carácteres")
     print("4 >> contar palabras")
     print("5 >> buscar palabra en texto")
+    print("6 >> invertir palabras")
     option = input("Seleccione opción: ")
 
     match option:
@@ -62,5 +67,8 @@ while 1==1:
                 print("La palabra SÍ se encuentra en el texto")
             else:
                 print("La palabra NO se encuentra en el texto")
+        case "6":
+            text = input("Introduzca una frase: \n ")
+            count_words(text, True)
         case _:
             print("Debe seleccionar una de las opciones numéricas del menú.")
